@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cápsula Educativa: Fundamentos de la Expresión Musical</title>
+  
+  <!-- Tipografía Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- html2pdf.js para generación del certificado -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <style>
+    /* ==========================================================
+       VARIABLES Y PALETA DE COLORES PASTEL / GLASSMORPHISM
+       ========================================================== */
+    :root {
+      --bg-gradient: linear-gradient(135deg, #f3e8ff 0%, #e0f2fe 35%, #ecfdf5 70%, #fef3c7 100%);
+      --pastel-lavender: #d8b4fe;
+      --pastel-sky: #7dd3fc;
+      --pastel-mint: #6ee7b7;
+      --pastel-pink: #f9a8d4;
+      --pastel-yellow: #fde047;
+      --pastel-lavender-light: #f5f3ff;
+      --text-main: #334155;
+      --text-muted: #64748b;
+      --card-bg: rgba(255, 255, 255, 0.72);
+      --card-border: rgba(255, 255, 255, 0.85);
+      --glass-shadow: 0 12px 36px 0 rgba(148, 163, 184, 0.18);
+      --primary: #8b5cf6;
+      --primary-hover: #7c3aed;
+      --secondary: #0ea5e9;
+      --accent: #10b981;
+      --danger: #f43f5e;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ==========================================================
+       RESETEO Y ESTILOS GENERALES (ACCESIBILIDAD WCAG 2.1 AA)
+       ========================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--text-main);
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      min-height: 100vh;
+      line-height: 1.7;
+      font-size: 16px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-title {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    p {
+      text-align: justify;
+      margin-bottom: 1rem;
+    }
+
+    .text-center {
+      text-align: center !important;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Botones y elementos interactivos */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 12px 28px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.25);
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(139, 92, 246, 0.35);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--primary);
+      border: 1px solid var(--pastel-lavender);
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+    }
+
+    .btn-outline-danger {
+      background: transparent;
+      border: 1px solid var(--danger);
+      color: var(--danger);
+    }
+    .btn-outline-danger:hover {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    /* Tarjeta Glassmorphism */
+    .glass-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--glass-shadow);
+      margin-bottom: 30px;
+    }
+
+    /* Barra Superior y Progreso */
+    .header-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+      padding: 12px 24px;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .logo-container i {
+      font-size: 1.8rem;
+    }
+
+    .progress-bar-container {
+      flex: 1;
+      max-width: 320px;
+      background: rgba(203, 213, 225, 0.5);
+      border-radius: 20px;
+      height: 10px;
+      overflow: hidden;
+      margin: 0 16px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--pastel-sky), var(--primary));
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .user-pill {
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--pastel-lavender);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Menú Flotante de Navegación */
+    .floating-nav {
+      position: sticky;
+      top: 65px;
+      z-index: 90;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+      padding: 10px 16px;
+      display: none; /* Oculto en el login */
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .nav-tabs-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .nav-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 16px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      border-radius: 30px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .nav-tab-btn:hover {
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--primary);
+    }
+
+    .nav-tab-btn.active {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+    }
+
+    /* Contenedor Principal de Secciones */
+    .capsule-main {
+      max-width: 1000px;
+      margin: 24px auto 80px auto;
+      padding: 0 20px;
+    }
+
+    .section-tab {
+      display: none;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .section-tab.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Formulario de Ingreso */
+    .login-container {
+      max-width: 540px;
+      margin: 40px auto;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 13px 18px;
+      border: 1.5px solid rgba(203, 213, 225, 0.8);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+      font-family: 'Nunito', sans-serif;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+    }
+
+    /* Tarjetas de Conceptos */
+    .concepts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin: 28px 0;
+    }
+
+    .concept-card {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      border-top: 5px solid var(--primary);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .concept-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .concept-card i {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .concept-card.card-melodia { border-top-color: var(--pastel-pink); }
+    .concept-card.card-melodia i { color: #db2777; }
+    .concept-card.card-armonia { border-top-color: var(--pastel-sky); }
+    .concept-card.card-armonia i { color: #0284c7; }
+    .concept-card.card-ritmo { border-top-color: var(--pastel-mint); }
+    .concept-card.card-ritmo i { color: #059669; }
+
+    /* Contenedor de Video y VideoQuiz */
+    .video-wrapper-card {
+      position: relative;
+      margin: 30px auto;
+      background: #0f172a;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.25);
+    }
+
+    .video-responsive {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-responsive iframe,
+    .video-responsive div#yt-player {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Modal / Pop-up del Video-Quiz */
+    .video-quiz-modal {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 50;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .quiz-modal-box {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      max-width: 580px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      max-height: 90%;
+      overflow-y: auto;
+    }
+
+    /* Emparejamiento / Relación de Columnas */
+    .matching-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .matching-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .match-item {
+      padding: 10px 14px;
+      background: #f1f5f9;
+      border: 2px dashed #cbd5e1;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 0.88rem;
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .match-item.selected {
+      background: var(--pastel-lavender-light);
+      border-color: var(--primary);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .match-item.matched {
+      background: #dcfce7;
+      border-color: #22c55e;
+      color: #15803d;
+      cursor: default;
+    }
+
+    /* Caja de Feedback */
+    .feedback-box {
+      margin-top: 15px;
+      padding: 12px 18px;
+      border-radius: var(--radius-sm);
+      display: none;
+      font-size: 0.95rem;
+      text-align: left;
+    }
+    .feedback-box.correct {
+      background: #dcfce7;
+      border: 1px solid #86efac;
+      color: #166534;
+    }
+    .feedback-box.incorrect {
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      color: #991b1b;
+    }
+
+    /* Componentes de Evaluación Sumativa */
+    .quiz-question-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--primary);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .options-list {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .option-item {
+      margin-bottom: 8px;
+    }
+
+    .option-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .option-label:hover {
+      background: #f1f5f9;
+    }
+
+    .option-input:checked + .option-label {
+      background: var(--pastel-lavender-light);
+      border-color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Certificado Oficial */
+    #certificate-render-zone {
+      display: none; /* Solo visible al generar o imprimir */
+      background: #fff;
+      padding: 40px;
+      border: 14px solid var(--pastel-lavender);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      max-width: 800px;
+      margin: 20px auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .cert-inner-border {
+      border: 2px dashed #94a3b8;
+      padding: 30px;
+      border-radius: var(--radius-md);
+    }
+
+    /* Chatbot Flotante */
+    .chatbot-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 22px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .chatbot-fab:hover {
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .chatbot-popup {
+      position: fixed;
+      bottom: 90px;
+      right: 24px;
+      width: 360px;
+      max-width: calc(100vw - 32px);
+      height: 480px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+      border: 1px solid var(--card-border);
+      z-index: 1000;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      animation: slideUp 0.3s ease;
+    }
+
+    .chatbot-header {
+      background: linear-gradient(135deg, var(--pastel-lavender), var(--pastel-sky));
+      padding: 16px;
+      color: #1e293b;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chatbot-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.9rem;
+    }
+
+    .chat-msg {
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      max-width: 82%;
+      line-height: 1.5;
+    }
+
+    .chat-msg.bot {
+      background: #f1f5f9;
+      color: #334155;
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+    }
+
+    .chat-msg.user {
+      background: var(--primary);
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+    }
+
+    .chatbot-input-bar {
+      padding: 10px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      gap: 6px;
+      background: #fff;
+    }
+
+    .chatbot-input-bar input {
+      flex: 1;
+      border: 1px solid #cbd5e1;
+      border-radius: 20px;
+      padding: 8px 14px;
+      font-size: 0.88rem;
+    }
+
+    .chatbot-input-bar button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .glass-card { padding: 22px; }
+      .header-content { flex-direction: column; text-align: center; }
+      .progress-bar-container { max-width: 100%; margin: 8px 0; }
+      .floating-nav { justify-content: flex-start; }
+      .matching-container { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR PERSISTENTE -->
+  <header class="header-bar" role="banner">
+    <div class="header-content">
+      <div class="logo-container">
+        <i class="fa-solid fa-music"></i>
+        <span>Cápsula Musical • Parvularia</span>
+      </div>
+
+      <div class="progress-bar-container" title="Progreso de la cápsula">
+        <div class="progress-bar-fill" id="global-progress-bar"></div>
+      </div>
+
+      <div id="user-display" class="user-pill">
+        <i class="fa-solid fa-circle-user"></i>
+        <span id="user-name-badge">Estudiante: Sin registrar</span>
+      </div>
+
+      <button onclick="clearUserData()" class="btn btn-outline-danger" style="padding: 4px 12px; font-size: 0.78rem;" title="Borrar datos almacenados">
+        <i class="fa-solid fa-trash-can"></i> Reiniciar Datos
+      </button>
+    </div>
+  </header>
+
+  <!-- MENÚ FLOTANTE ENTRE PESTAÑAS (Visible tras registro) -->
+  <nav class="floating-nav" id="main-nav-tabs" aria-label="Navegación de Secciones">
+    <div class="nav-tabs-wrapper">
+      <button class="nav-tab-btn active" onclick="switchTab('portada')"><i class="fa-solid fa-compass"></i> Portada</button>
+      <button class="nav-tab-btn" onclick="switchTab('introduccion')"><i class="fa-solid fa-book-open"></i> Introducción</button>
+      <button class="nav-tab-btn" onclick="switchTab('activacion')"><i class="fa-solid fa-gamepad"></i> Activación</button>
+      <button class="nav-tab-btn" onclick="switchTab('desarrollo')"><i class="fa-solid fa-video"></i> Desarrollo & Video</button>
+      <button class="nav-tab-btn" onclick="switchTab('eval-formativa')"><i class="fa-solid fa-puzzle-piece"></i> Formativa</button>
+      <button class="nav-tab-btn" onclick="switchTab('evaluacion')"><i class="fa-solid fa-file-signature"></i> Evaluación</button>
+      <button class="nav-tab-btn" onclick="switchTab('sintesis')"><i class="fa-solid fa-headphones"></i> Síntesis & Pódcast</button>
+      <button class="nav-tab-btn" onclick="switchTab('cierre')"><i class="fa-solid fa-lightbulb"></i> Metacognición</button>
+    </div>
+  </nav>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <main class="capsule-main">
+
+    <!-- ========================================================
+         SECCIÓN 1: FORMULARIO DE INGRESO
+         ======================================================== -->
+    <section id="tab-login" class="section-tab active">
+      <div class="glass-card login-container text-center">
+        <div style="font-size: 3rem; color: var(--primary); margin-bottom: 12px;">
+          <i class="fa-solid fa-guitar"></i>
+        </div>
+        <h2>Bienvenida al Aula Musical</h2>
+        <p class="text-center" style="color: var(--text-muted); font-size: 0.95rem;">
+          Estimada estudiante de <strong>Técnico en Educación Parvularia</strong>: ingresa tus datos para personalizar tu experiencia formativa y registrar tu progreso. Estos datos son obligatorios para generar tu <strong>Certificado de Aprobación</strong> al completar la cápsula.
+        </p>
+
+        <form id="form-login" onsubmit="handleLoginSubmit(event)">
+          <div class="form-group">
+            <label for="student-name"><i class="fa-solid fa-user"></i> Nombre Completo *</label>
+            <input type="text" id="student-name" class="form-control" placeholder="Ej: Marcela González Pérez" required>
+          </div>
+
+          <div class="form-group">
+            <label for="student-email"><i class="fa-solid fa-envelope"></i> Correo Electrónico Institucional *</label>
+            <input type="email" id="student-email" class="form-control" placeholder="marcela.gonzalez@estudiante.cl" required>
+          </div>
+
+          <div class="form-group">
+            <label for="student-rut"><i class="fa-solid fa-id-card"></i> RUT (Opcional)</label>
+            <input type="text" id="student-rut" class="form-control" placeholder="Ej: 12.345.678-9">
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> Comenzar Cápsula Educativa
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECCIÓN 2: PORTADA
+         ======================================================== -->
+    <section id="tab-portada" class="section-tab">
+      <div class="glass-card text-center">
+        <span style="background: var(--pastel-lavender-light); color: var(--primary); font-weight: 700; padding: 6px 18px; border-radius: 30px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">
+          Formación Técnico-Pedagógica
+        </span>
+        <h1 style="font-size: 2.4rem; margin: 18px 0 12px 0;">Fundamentos de la Expresión Musical: Melodía, Armonía y Ritmo</h1>
+        <p class="text-center" style="max-width: 750px; margin: 0 auto 26px auto; color: var(--text-muted); font-size: 1.05rem;">
+          Una experiencia interactiva y didáctica diseñada para futuras Técnicas en Educación Parvularia. Aprende a distinguir y utilizar los pilares de la música en el aula infantil.
+        </p>
+
+        <!-- Imagen Central alineada -->
+        <div style="max-width: 700px; margin: 0 auto 28px auto;">
+          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1000&q=80" alt="Instrumentos musicales y expresión acústica" loading="lazy" style="box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+        </div>
+
+        <button onclick="switchTab('introduccion')" class="btn btn-primary btn-lg">
+          <i class="fa-solid fa-play"></i> Iniciar Recorrido Pedagógico
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECCIÓN 3: INTRODUCCIÓN
+         ======================================================== -->
+    <section id="tab-introduccion" class="section-tab">
+      <div class="glass-card">
+        <div class="text-center" style="margin-bottom: 24px;">
+          <i class="fa-solid fa-graduation-cap" style="font-size: 2.8rem; color: var(--primary);"></i>
+          <h2 style="margin-top: 10px;">Introducción y Sentido Pedagógico</h2>
+        </div>
+
+        <p>
+          En la Educación Parvularia, la música es un lenguaje integrador y sensible que favorece la plasticidad cerebral, el desarrollo psicomotriz, el lenguaje verbal y la expresión socioemocional de niños y niñas. Sin embargo, para guiar experiencias musicales con intención pedagógica, la educadora y la técnico deben poseer herramientas que les permitan <em>entender, apreciar y verbalizar</em> lo que ocurre en el entorno sonoro [00:00:08, 00:00:19].
+        </p>
+        <p>
+          Tal como enseña el músico y divulgador César Muñoz en <em>La Cata Musical</em>, cuando iniciamos el estudio del arte musical, aprendemos que existen tres pilares fundamentales que sostienen toda creación: <strong>la Melodía</strong>, <strong>la Armonía</strong> y <strong>el Ritmo</strong> [00:00:11, 00:00:32, 00:00:54]. Conocer estos elementos nos permite seleccionar repertorios adecuados, cantar al unísono, coordinar percusiones corporales y enriquecer la sensibilidad auditiva en la primera infancia [00:03:00, 00:07:34, 00:09:42].
+        </p>
+
+        <!-- Imagen ilustrativa -->
+        <div style="max-width: 600px; margin: 24px auto;">
+          <img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=800&q=80" alt="Partituras y pentagrama musical" loading="lazy">
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.9); border-radius: var(--radius-md); padding: 24px; margin-top: 24px; border: 1px solid var(--pastel-lavender);">
+          <h3 style="color: var(--primary); margin-bottom: 12px;"><i class="fa-solid fa-bullseye"></i> Objetivo de la Cápsula</h3>
+          <p style="font-weight: 600;">
+            Al finalizar esta cápsula educativa, las estudiantes serán capaces de identificar y comprender los tres elementos fundamentales de la música (melodía, armonía y ritmo), reconociendo su importancia en la expresión musical y aplicando estos conceptos en actividades dirigidas a niños y niñas del nivel de educación parvularia.
+          </p>
+
+          <h3 style="color: var(--secondary); margin: 20px 0 12px 0;"><i class="fa-solid fa-list-check"></i> Resultados de Aprendizaje</h3>
+          <ul style="list-style: none; padding-left: 0; line-height: 2;">
+            <li><i class="fa-solid fa-check-circle" style="color: var(--accent); margin-right: 8px;"></i> <strong>Identificar</strong> los conceptos de melodía, armonía y ritmo [00:00:54].</li>
+            <li><i class="fa-solid fa-check-circle" style="color: var(--accent); margin-right: 8px;"></i> <strong>Diferenciar</strong> las características estructurales de cada elemento musical [00:01:04, 00:04:21, 00:08:09].</li>
+            <li><i class="fa-solid fa-check-circle" style="color: var(--accent); margin-right: 8px;"></i> <strong>Reconocer</strong> la importancia del pulso y del ritmo en la interpretación musical [00:07:07, 00:07:38].</li>
+            <li><i class="fa-solid fa-check-circle" style="color: var(--accent); margin-right: 8px;"></i> <strong>Aplicar</strong> estos conocimientos en experiencias musicales dirigidas a la primera infancia.</li>
+            <li><i class="fa-solid fa-check-circle" style="color: var(--accent); margin-right: 8px;"></i> <strong>Valorar</strong> la música como recurso pedagógico para favorecer el desarrollo integral infantil.</li>
+          </ul>
+        </div>
+
+        <div class="text-center" style="margin-top: 28px;">
+          <button onclick="switchTab('activacion')" class="btn btn-primary">
+            Siguiente: Activar Conocimientos Previos <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECCIÓN 4: ACTIVACIÓN DE CONOCIMIENTOS PREVIOS
+         ======================================================== -->
+    <section id="tab-activacion" class="section-tab">
+      <div class="glass-card text-center">
+        <i class="fa-solid fa-puzzle-piece" style="font-size: 2.8rem; color: var(--secondary);"></i>
+        <h2 style="margin: 12px 0;">Activación de Saberes Previos</h2>
+        <p class="text-center" style="max-width: 750px; margin: 0 auto 20px auto;">
+          Antes de sumergirte en los videos y explicaciones técnicas, organicemos nuestras intuiciones musicales. En el siguiente juego de Educaplay deberás ordenar y vincular términos musicales básicos. ¡Diviértete descubriendo qué tanto recuerdas!
+        </p>
+
+        <div style="background: rgba(255,255,255,0.8); border-radius: var(--radius-md); padding: 14px; margin-bottom: 24px; display: inline-block;">
+          <p style="margin: 0; font-size: 0.95rem; color: var(--text-main);">
+            <i class="fa-solid fa-hand-pointer" style="color: var(--primary);"></i> <strong>Instrucciones:</strong> Haz clic en el botón de reproducción dentro del juego interactivo y arrastra u ordena los conceptos según corresponda. Al terminar, avanza al Desarrollo.
+          </p>
+        </div>
+
+        <!-- IFRAME EDUCAPLAY -->
+        <div style="max-width: 820px; margin: 0 auto; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--glass-shadow); background: #ffffff;">
+          <iframe allow="fullscreen; autoplay; allow-top-navigation-by-user-activation" allowfullscreen width="100%" height="650" frameborder="0" src="https://www.educaplay.com/game/29768346-ordena_los_elementos_de_la_musica.html" title="Juego Educaplay: Ordena los elementos de la música"></iframe>
+        </div>
+
+        <div class="text-center" style="margin-top: 28px;">
+          <button onclick="switchTab('desarrollo')" class="btn btn-primary">
+            Siguiente: Contenidos Centrales & Video-Quiz <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECCIÓN 5: DESARROLLO (VIDEO Y VIDEO-QUIZ SINCRONIZADO)
+         ======================================================== -->
+    <section id="tab-desarrollo" class="section-tab">
+      <div class="glass-card">
+        <div class="text-center">
+          <i class="fa-solid fa-compact-disc" style="font-size: 2.8rem; color: var(--primary);"></i>
+          <h2 style="margin: 10px 0;">Los Tres Pilares Fundamentales de la Música</h2>
+          <p class="text-center" style="max-width: 800px; margin: 0 auto 20px auto; color: var(--text-muted);">
+            Observa atentamente el video guiado por César Muñoz. A medida que avance el material, la reproducción se detendrá de forma automática en 3 momentos clave (3:00, 6:50 y 8:30) para evaluar tu comprensión inmediata.
+          </p>
+        </div>
+
+        <!-- Tarjetas conceptuales -->
+        <div class="concepts-grid">
+          <div class="concept-card card-melodia">
+            <i class="fa-solid fa-microphone-lines"></i>
+            <h3>1. La Melodía</h3>
+            <p style="font-size: 0.92rem;">
+              Es la sucesión horizontal y ordenada de notas con sentido coherente [00:01:08]. Es aquello que naturalmente tarareamos o recordamos de una canción infantil [00:01:05, 00:03:36].
+            </p>
+          </div>
+
+          <div class="concept-card card-armonia">
+            <i class="fa-solid fa-layer-group"></i>
+            <h3>2. La Armonía</h3>
+            <p style="font-size: 0.92rem;">
+              El soporte y acompañamiento de la melodía [00:04:21]. Se compone de <em>acordes</em> (3 notas = tríadas; 4 notas = tétradas) sonando simultáneamente de manera vertical [00:05:27, 00:05:52, 00:05:55].
+            </p>
+          </div>
+
+          <div class="concept-card card-ritmo">
+            <i class="fa-solid fa-drum"></i>
+            <h3>3. El Ritmo</h3>
+            <p style="font-size: 0.92rem;">
+              Cómo se organizan los sonidos en el tiempo [00:08:09]. Lleva dentro el <strong>pulso</strong> (el latido musical que marcamos con las palmas o el pie) [00:06:57, 00:07:35].
+            </p>
+          </div>
+        </div>
+
+        <!-- CONTENEDOR REPRODUCTOR DE YOUTUBE CON API -->
+        <div class="video-wrapper-card" id="video-quiz-container">
+          <div class="video-responsive">
+            <div id="yt-player"></div>
+          </div>
+
+          <!-- MODAL 1: Minuto 3:00 (Melodía / Sí o No) -->
+          <div id="quiz-modal-1" class="video-quiz-modal">
+            <div class="quiz-modal-box">
+              <span style="background: var(--pastel-pink); color: #831843; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">Momento 1 • Minuto 3:00</span>
+              <h3 style="margin: 14px 0 10px 0;"><i class="fa-solid fa-circle-question"></i> Pregunta sobre la Melodía</h3>
+              <p style="text-align: center; font-size: 1rem; margin-bottom: 20px;">
+                Según lo explicado en el video: <strong>¿Es la melodía una sucesión de notas ordenadas que generan un discurso musical coherente y que comúnmente podemos tararear o silbar?</strong> [00:01:05, 00:01:08]
+              </p>
+              <div style="display: flex; gap: 14px; justify-content: center;">
+                <button onclick="handleVideoQuizAnswer(1, true)" class="btn btn-primary" style="flex: 1;">
+                  <i class="fa-solid fa-check"></i> SÍ (Verdadero)
+                </button>
+                <button onclick="handleVideoQuizAnswer(1, false)" class="btn btn-secondary" style="flex: 1;">
+                  <i class="fa-solid fa-xmark"></i> NO (Falso)
+                </button>
+              </div>
+              <div id="quiz-feedback-1" class="feedback-box"></div>
+              <button id="resume-btn-1" onclick="resumeVideoAfterQuiz(1)" class="btn btn-success" style="display: none; margin-top: 15px; width: 100%;">
+                Continuar reproducción <i class="fa-solid fa-play"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- MODAL 2: Minuto 6:50 (Cada oveja con su pareja: Armonía, Tríadas y Tétradas) -->
+          <div id="quiz-modal-2" class="video-quiz-modal">
+            <div class="quiz-modal-box">
+              <span style="background: var(--pastel-sky); color: #0369a1; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">Momento 2 • Minuto 6:50</span>
+              <h3 style="margin: 14px 0 10px 0;"><i class="fa-solid fa-link"></i> Cada oveja con su pareja: Armonía</h3>
+              <p style="text-align: center; font-size: 0.95rem; margin-bottom: 12px;">
+                Relaciona cada concepto con su definición correcta seleccionando un elemento de la izquierda y luego su pareja a la derecha [00:04:21, 00:05:52, 00:05:55]:
+              </p>
+
+              <div class="matching-container" id="match-game-2">
+                <div class="matching-col" id="col-terms-2">
+                  <div class="match-item" data-id="armonia" onclick="selectMatchItem(this, 'term', 2)">Armonía</div>
+                  <div class="match-item" data-id="triada" onclick="selectMatchItem(this, 'term', 2)">Tríada</div>
+                  <div class="match-item" data-id="tetrada" onclick="selectMatchItem(this, 'term', 2)">Tétrada</div>
+                </div>
+                <div class="matching-col" id="col-defs-2">
+                  <div class="match-item" data-id="triada" onclick="selectMatchItem(this, 'def', 2)">Acorde formado por 3 notas</div>
+                  <div class="match-item" data-id="tetrada" onclick="selectMatchItem(this, 'def', 2)">Acorde formado por 4 notas</div>
+                  <div class="match-item" data-id="armonia" onclick="selectMatchItem(this, 'def', 2)">Acompañamiento simultáneo de acordes</div>
+                </div>
+              </div>
+
+              <div id="quiz-feedback-2" class="feedback-box"></div>
+              <button id="resume-btn-2" onclick="resumeVideoAfterQuiz(2)" class="btn btn-success" style="display: none; margin-top: 15px; width: 100%;">
+                ¡Completado! Continuar video <i class="fa-solid fa-play"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- MODAL 3: Minuto 8:30 (Relacionar columnas: Ritmo, Pulso y Unísono) -->
+          <div id="quiz-modal-3" class="video-quiz-modal">
+            <div class="quiz-modal-box">
+              <span style="background: var(--pastel-mint); color: #065f46; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">Momento 3 • Minuto 8:30</span>
+              <h3 style="margin: 14px 0 10px 0;"><i class="fa-solid fa-arrows-split-up-and-left"></i> Relaciona: Ritmo, Pulso y Unísono</h3>
+              <p style="text-align: center; font-size: 0.95rem; margin-bottom: 12px;">
+                Empareja cada concepto clave con su manifestación sonora [00:03:00, 00:06:57, 00:08:09]:
+              </p>
+
+              <div class="matching-container" id="match-game-3">
+                <div class="matching-col" id="col-terms-3">
+                  <div class="match-item" data-id="pulso" onclick="selectMatchItem(this, 'term', 3)">Pulso</div>
+                  <div class="match-item" data-id="unisono" onclick="selectMatchItem(this, 'term', 3)">Unísono</div>
+                  <div class="match-item" data-id="ritmo" onclick="selectMatchItem(this, 'term', 3)">Ritmo</div>
+                </div>
+                <div class="matching-col" id="col-defs-3">
+                  <div class="match-item" data-id="unisono" onclick="selectMatchItem(this, 'def', 3)">Cantar exactamente las mismas notas juntos</div>
+                  <div class="match-item" data-id="ritmo" onclick="selectMatchItem(this, 'def', 3)">Organización de notas y duraciones en el tiempo</div>
+                  <div class="match-item" data-id="pulso" onclick="selectMatchItem(this, 'def', 3)">Latido constante de la música (el tempo)</div>
+                </div>
+              </div>
+
+              <div id="quiz-feedback-3" class="feedback-box"></div>
+              <button id="resume-btn-3" onclick="resumeVideoAfterQuiz(3)" class="btn btn-success" style="display: none; margin-top: 15px; width: 100%;">
+                ¡Excelente! Reanudar video <i class="fa-solid fa-play"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controles de apoyo en caso de bloqueo de autoplay -->
+        <div style="background: rgba(255,255,255,0.7); border-radius: var(--radius-sm); padding: 12px 18px; font-size: 0.88rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <span><i class="fa-solid fa-circle-info" style="color: var(--secondary);"></i> El video detecta el tiempo transcurrido. Si tu navegador bloquea la pausa automática, puedes activar manualmente las preguntas aquí:</span>
+          <div style="display: flex; gap: 8px;">
+            <button onclick="triggerQuizManual(1)" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">Min 3:00</button>
+            <button onclick="triggerQuizManual(2)" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">Min 6:50</button>
+            <button onclick="triggerQuizManual(3)" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">Min 8:30</button>
+          </div>
+        </div>
+
+        <div class="text-center" style="margin-top: 28px;">
+          <button onclick="switchTab('eval-formativa')" class="btn btn-primary">
+            Siguiente: Evaluación Formativa (Juego) <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECCIÓN 6: EVALUACIÓN FORMATIVA (WORDWALL)
+         ======================================================== -->
+    <section id="tab-eval-formativa" class="section-tab">
+      <div class="glass-card text-center">
+        <i class="fa-solid fa-shapes" style="font-size: 2.8rem; color: var(--pastel-pink);"></i>
+        <h2 style="margin: 12px 0;">Evaluación Formativa Intercativa</h2>
+        <p class="text-center" style="max-width: 750px; margin: 0 auto 20px auto;">
+          Consolida lo aprendido en el video a través de este juego didáctico embebido de Wordwall. Pon a prueba tus habilidades de reconocimiento auditivo y conceptual antes del examen sumativo.
+        </p>
+
+        <!-- IFRAME WORDWALL -->
+        <div style="max-width: 600px; margin: 0 auto; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--glass-shadow); background: #ffffff; padding: 10px;">
+          <iframe style="max-width:100%" src="https://wordwall.net/es/embed/654f002791d5465fb562cd89922293b1?themeId=65&templateId=36&fontStackId=0" width="500" height="380" frameborder="0" allowfullscreen title="Juego de evaluación formativa Wordwall"></iframe>
+        </div>
+
+        <div class="text-center" style="margin-top: 28px;">
+          <button onclick="switchTab('evaluacion')" class="btn btn-primary">
+            Siguiente: Evaluación Sumativa y Certificación <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECCIÓN 7: EVALUACIÓN SUMATIVA FINAL
+         ======================================================== -->
+    <section id="tab-evaluacion" class="section-tab">
+      <div class="glass-card">
+        <div class="text-center" style="margin-bottom: 24px;">
+          <i class="fa-solid fa-clipboard-check" style="font-size: 2.8rem; color: var(--primary);"></i>
+          <h2 style="margin-top: 10px;">Evaluación Sumativa de los Aprendizajes</h2>
+          <p class="text-center" style="color: var(--text-muted); max-width: 750px; margin: 0 auto;">
+            Responde los siguientes ítems de selección múltiple, verdadero/falso, emparejamiento didáctico y preguntas de desarrollo. Se requiere un <strong>75% de logro</strong> para obtener el Certificado de Aprobación.
+          </p>
+        </div>
+
+        <form id="final-exam-form" onsubmit="handleFinalExamSubmit(event)">
+
+          <!-- PARTE A: 4 Preguntas de Opción Múltiple -->
+          <h3 style="color: var(--primary); margin: 24px 0 16px 0;"><i class="fa-solid fa-list-ol"></i> Parte A: Opción Múltiple (Comprensión y Aplicación)</h3>
+
+          <div class="quiz-question-card">
+            <p><strong>1. ¿Cuál es la definición exacta de "Melodía" entregada en el video? [00:01:08]</strong></p>
+            <ul class="options-list">
+              <li class="option-item"><input type="radio" name="q1" value="A" id="q1a" class="option-input" required><label for="q1a" class="option-label">A) Es el latido acelerado o lento que produce una batería o percusión.</label></li>
+              <li class="option-item"><input type="radio" name="q1" value="B" id="q1b" class="option-input"><label for="q1b" class="option-label">B) Es una sucesión de notas ordenadas que generan un discurso musical coherente.</label></li>
+              <li class="option-item"><input type="radio" name="q1" value="C" id="q1c" class="option-input"><label for="q1c" class="option-label">C) Es la conjunción de al menos tres acordes ejecutados en el piano al unísono.</label></li>
+            </ul>
+          </div>
+
+          <div class="quiz-question-card">
+            <p><strong>2. Cuando en la sala cuna o jardín infantil la educadora y los párvulos cantan exactamente las mismas notas al mismo tiempo, ¿qué fenómeno vocal ocurre? [00:02:44, 00:03:00]</strong></p>
+            <ul class="options-list">
+              <li class="option-item"><input type="radio" name="q2" value="A" id="q2a" class="option-input" required><label for="q2a" class="option-label">A) Canto a contrapunto polifónico complejo.</label></li>
+              <li class="option-item"><input type="radio" name="q2" value="B" id="q2b" class="option-input"><label for="q2b" class="option-label">B) Canto en armonía de tétradas mayores.</label></li>
+              <li class="option-item"><input type="radio" name="q2" value="C" id="q2c" class="option-input"><label for="q2c" class="option-label">C) Canto al unísono.</label></li>
+            </ul>
+          </div>
+
+          <div class="quiz-question-card">
+            <p><strong>3. En un contexto pedagógico donde una técnico en educación parvularia toca acordes en una guitarra mientras los niños entonan la canción "Los Pollitos Dicen", ¿qué elemento musical aporta la guitarra? [00:04:25, 00:04:33]</strong></p>
+            <ul class="options-list">
+              <li class="option-item"><input type="radio" name="q3" value="A" id="q3a" class="option-input" required><label for="q3a" class="option-label">A) La Armonía (acompañamiento vertical).</label></li>
+              <li class="option-item"><input type="radio" name="q3" value="B" id="q3b" class="option-input"><label for="q3b" class="option-label">B) Únicamente la Melodía solista.</label></li>
+              <li class="option-item"><input type="radio" name="q3" value="C" id="q3c" class="option-input"><label for="q3c" class="option-label">C) La pulsación asonante de compás simple.</label></li>
+            </ul>
+          </div>
+
+          <div class="quiz-question-card">
+            <p><strong>4. ¿Cómo se denominan los acordes según estén compuestos por 3 o 4 notas sonando en conjunto? [00:05:43, 00:05:52, 00:05:55]</strong></p>
+            <ul class="options-list">
+              <li class="option-item"><input type="radio" name="q4" value="A" id="q4a" class="option-input" required><label for="q4a" class="option-label">A) Tríadas (3 notas) y Tétradas (4 notas).</label></li>
+              <li class="option-item"><input type="radio" name="q4" value="B" id="q4b" class="option-input"><label for="q4b" class="option-label">B) Unísonos (3 notas) y Polifonías (4 notas).</label></li>
+              <li class="option-item"><input type="radio" name="q4" value="C" id="q4c" class="option-input"><label for="q4c" class="option-label">C) Escalas simples y Escalas dobles.</label></li>
+            </ul>
+          </div>
+
+          <!-- PARTE B: 4 Preguntas Verdadero o Falso -->
+          <h3 style="color: var(--secondary); margin: 24px 0 16px 0;"><i class="fa-solid fa-check-double"></i> Parte B: Verdadero (V) o Falso (F)</h3>
+
+          <div class="quiz-question-card">
+            <p><strong>5. Las notas musicales se diferencian principalmente entre sí por su frecuencia, es decir, qué tan aguda o grave es cada una. [00:01:49]</strong></p>
+            <ul class="options-list">
+              <li class="option-item"><input type="radio" name="q5" value="V" id="q5v" class="option-input" required><label for="q5v" class="option-label">Verdadero (V)</label></li>
+              <li class="option-item"><input type="radio" name="q5" value="F" id="q5f" class="option-input"><label for="q5f" class="option-label">Falso (F)</label></li>
+            </ul>
+          </div>
+
+          <div class="quiz-question-card">
+            <p><strong>6. El pulso musical es exclusivo de la batería y la percusión acústica, y no existe en una obra ejecutada solo en piano clásico o violín. [00:07:01, 00:07:45]</strong></p>
+            <ul class="options-list">
+              <li class="option-item"><input type="radio" name="q6" value="V" id="q6v" class="option-input" required><label for="q6v" class="option-label">Verdadero (V)</label></li>
+              <li class="option-item"><input type="radio" name="q6" value="F" id="q6f" class="option-input"><label for="q6f" class="option-label">Falso (F)</label></li>
+            </ul>
+          </div>
+
+          <div class="quiz-question-card">
+            <p><strong>7. Variar las figuras rítmicas o duraciones de una misma sucesión de notas cambia por completo el carácter de la melodía resultante. [00:08:04]</strong></p>
+            <ul class="options-list">
+              <li class="option-item"><input type="radio" name="q7" value="V" id="q7v" class="option-input" required><label for="q7v" class="option-label">Verdadero (V)</label></li>
+              <li class="option-item"><input type="radio" name="q7" value="F" id="q7f" class="option-input"><label for="q7f" class="option-label">Falso (F)</label></li>
+            </ul>
+          </div>
+
+          <div class="quiz-question-card">
+            <p><strong>8. En la práctica musical y pedagógica, no se trata únicamente de cuánta teoría sepa la educadora, sino de la creatividad, ingenio y goce con que comparte la música con los párvulos. [00:09:28, 00:09:38, 00:09:47]</strong></p>
+            <ul class="options-list">
+              <li class="option-item"><input type="radio" name="q8" value="V" id="q8v" class="option-input" required><label for="q8v" class="option-label">Verdadero (V)</label></li>
+              <li class="option-item"><input type="radio" name="q8" value="F" id="q8f" class="option-input"><label for="q8f" class="option-label">Falso (F)</label></li>
+            </ul>
+          </div>
+
+          <!-- PARTE C: Une las Parejas - Educación Parvularia -->
+          <h3 style="color: var(--accent); margin: 24px 0 16px 0;"><i class="fa-solid fa-puzzle-piece"></i> Parte C: Emparejamiento en Educación Parvularia</h3>
+          <div class="quiz-question-card">
+            <p>Selecciona cada elemento pedagógico de la izquierda y enlázalo con su manifestación didáctica correspondiente:</p>
+            
+            <div class="matching-container" id="match-game-final">
+              <div class="matching-col" id="col-terms-final">
+                <div class="match-item" data-id="p1" onclick="selectMatchItem(this, 'term', 'final')">Estimulación del Pulso</div>
+                <div class="match-item" data-id="p2" onclick="selectMatchItem(this, 'term', 'final')">Juegos de Melodía</div>
+                <div class="match-item" data-id="p3" onclick="selectMatchItem(this, 'term', 'final')">Exploración de la Armonía</div>
+              </div>
+              <div class="matching-col" id="col-defs-final">
+                <div class="match-item" data-id="p2" onclick="selectMatchItem(this, 'def', 'final')">Cantar rimas cortas y reconocer alturas (graves y agudos)</div>
+                <div class="match-item" data-id="p1" onclick="selectMatchItem(this, 'def', 'final')">Caminar, marchar y aplaudir al compás regular de una música</div>
+                <div class="match-item" data-id="p3" onclick="selectMatchItem(this, 'def', 'final')">Acompañar un cuento sonoro con acordes de metalófono o ukelele</div>
+              </div>
+            </div>
+            <input type="hidden" id="match-final-completed" value="0">
+          </div>
+
+          <!-- PARTE D: Cuestionario de Aplicación -->
+          <h3 style="color: #6366f1; margin: 24px 0 16px 0;"><i class="fa-solid fa-pen-fancy"></i> Parte D: Preguntas de Cuestionario</h3>
+
+          <div class="quiz-question-card">
+            <p><strong>9. ¿Por qué es fundamental que la técnico en párvulos estimule el sentido del "Pulso" en niños entre 2 y 5 años?</strong></p>
+            <textarea id="q9-text" class="form-control" rows="3" placeholder="Explica tu respuesta vinculando el pulso con la coordinación motriz, la marcha o el lenguaje..." required></textarea>
+          </div>
+
+          <div class="quiz-question-card">
+            <p><strong>10. Describe una actividad breve donde utilices simultáneamente la voz (melodía) y un instrumento u objeto sonoro (pulso/ritmo) en el aula.</strong></p>
+            <textarea id="q10-text" class="form-control" rows="3" placeholder="Describe la actividad, el material utilizado y el rol de las niñas y niños..." required></textarea>
+          </div>
+
+          <div class="text-center" style="margin-top: 30px;">
+            <button type="submit" class="btn btn-primary btn-lg">
+              <i class="fa-solid fa-paper-plane"></i> Finalizar y Calificar Evaluación
+            </button>
+          </div>
+        </form>
+
+        <!-- Resultados de la Evaluación -->
+        <div id="exam-results-card" style="display: none; margin-top: 30px;" class="glass-card text-center">
+          <div id="exam-score-icon" style="font-size: 3.5rem;"></div>
+          <h2 id="exam-score-title" style="margin: 12px 0;"></h2>
+          <p id="exam-score-text" style="font-size: 1.15rem;"></p>
+          <div id="exam-actions-zone" style="margin-top: 24px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECCIÓN 8: SÍNTESIS & PÓDCAST
+         ======================================================== -->
+    <section id="tab-sintesis" class="section-tab">
+      <div class="glass-card">
+        <div class="text-center">
+          <i class="fa-solid fa-headphones-simple" style="font-size: 2.8rem; color: var(--secondary);"></i>
+          <h2 style="margin: 10px 0;">Síntesis Conceptual y Pódcast</h2>
+          <p class="text-center" style="max-width: 750px; margin: 0 auto 24px auto; color: var(--text-muted);">
+            Escucha la síntesis explicativa en audio y repasa el mapa infográfico que reúne las ideas esenciales del curso.
+          </p>
+        </div>
+
+        <!-- Tarjeta Pódcast funcional -->
+        <div style="background: rgba(255,255,255,0.9); border-radius: var(--radius-md); padding: 26px; border: 1.5px solid var(--pastel-sky); margin-bottom: 30px; box-shadow: 0 8px 20px rgba(14,165,233,0.1);">
+          <div style="display: flex; align-items: center; gap: 18px; margin-bottom: 18px;">
+            <div style="background: var(--pastel-sky); color: #0284c7; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem;">
+              <i class="fa-solid fa-podcast"></i>
+            </div>
+            <div>
+              <h3 style="margin-bottom: 4px;">Pódcast Educativo: "Los Pilares de la Expresión Musical"</h3>
+              <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted);">Episodio formativo generado con NotebookLM • Duración: 6 min</p>
+            </div>
+          </div>
+
+          <p>
+            Escucha este análisis sonoro detallado sobre la relación entre melodía, armonía y ritmo, y cómo adaptarlo a canciones y rondas de Educación Parvularia.
+          </p>
+
+          <div style="text-align: center; margin: 20px 0;">
+            <a href="https://notebooklm.google.com/notebook/d6c0f6cb-54f1-461b-b3b6-0bfe1f2af666/artifact/9a729f67-f0bd-48c1-bbcc-b11647c23082?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Pódcast Oficial en NotebookLM
+            </a>
+          </div>
+
+          <!-- Reproductor de audio embebido de demostración / preview -->
+          <div style="background: #f8fafc; border-radius: var(--radius-sm); padding: 14px; text-align: center;">
+            <p style="font-size: 0.85rem; margin-bottom: 8px; color: var(--text-muted);"><i class="fa-solid fa-volume-high"></i> Reproductor de audio pedagógico complementario:</p>
+            <audio controls style="width: 100%; max-width: 500px;">
+              <source src="https://actions.google.com/sounds/v1/water/waves_crashing_on_rock_beach.ogg" type="audio/ogg">
+              Tu navegador no soporta el elemento de audio.
+            </audio>
+          </div>
+        </div>
+
+        <!-- Micro-resumen Infográfico -->
+        <div style="background: #ffffff; border-radius: var(--radius-md); padding: 24px; box-shadow: var(--glass-shadow);">
+          <h3 style="color: var(--primary); text-align: center; margin-bottom: 16px;"><i class="fa-solid fa-network-wired"></i> Mapa Relacional de Conceptos</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; text-align: center;">
+            <div style="padding: 16px; background: #fdf2f8; border-radius: var(--radius-sm);">
+              <h4 style="color: #db2777;">Melodía</h4>
+              <p style="font-size: 0.85rem; margin-bottom: 0;">Dimensión horizontal. Altura (grave/agudo). Discurso principal que canta el párvulo.</p>
+            </div>
+            <div style="padding: 16px; background: #f0f9ff; border-radius: var(--radius-sm);">
+              <h4 style="color: #0284c7;">Armonía</h4>
+              <p style="font-size: 0.85rem; margin-bottom: 0;">Dimensión vertical. Tríadas y tétradas. Acompañamiento instrumental que sostiene el ambiente.</p>
+            </div>
+            <div style="padding: 16px; background: #ecfdf5; border-radius: var(--radius-sm);">
+              <h4 style="color: #059669;">Ritmo</h4>
+              <p style="font-size: 0.85rem; margin-bottom: 0;">Dimensión temporal. Pulso y duración. Coordinación corporal, motricidad y danza.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center" style="margin-top: 28px;">
+          <button onclick="switchTab('cierre')" class="btn btn-primary">
+            Siguiente: Preguntas Metacognitivas <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECCIÓN 9: CIERRE Y PREGUNTAS METACOGNITIVAS
+         ======================================================== -->
+    <section id="tab-cierre" class="section-tab">
+      <div class="glass-card">
+        <div class="text-center" style="margin-bottom: 24px;">
+          <i class="fa-solid fa-brain" style="font-size: 2.8rem; color: #a855f7;"></i>
+          <h2 style="margin-top: 10px;">Reflexión Pedagógica y Metacognición</h2>
+          <p class="text-center" style="max-width: 750px; margin: 0 auto; color: var(--text-muted);">
+            La verdadera apropiación del aprendizaje ocurre cuando relacionas la teoría musical con tu práctica cotidiana junto a niños y niñas en el aula parvularia. Responde con profundidad reflexiva.
+          </p>
+        </div>
+
+        <div class="quiz-question-card">
+          <label for="meta-1" style="font-weight: 700; display: block; margin-bottom: 8px;">
+            1. ¿Cómo podrías utilizar el recurso musical del video para favorecer el desarrollo del lenguaje y la expresión en niños y niñas de educación parvularia?
+          </label>
+          <textarea id="meta-1" class="form-control" rows="4" placeholder="Escribe tu reflexión pedagógica aquí..."></textarea>
+        </div>
+
+        <div class="quiz-question-card">
+          <label for="meta-2" style="font-weight: 700; display: block; margin-bottom: 8px;">
+            2. ¿Qué estrategias pedagógicas implementarías para transformar este contenido musical en una experiencia de aprendizaje activa y significativa?
+          </label>
+          <textarea id="meta-2" class="form-control" rows="4" placeholder="Escribe tu reflexión pedagógica aquí..."></textarea>
+        </div>
+
+        <div class="quiz-question-card">
+          <label for="meta-3" style="font-weight: 700; display: block; margin-bottom: 8px;">
+            3. Desde tu rol profesional, ¿qué habilidades o aprendizajes consideras que se fortalecen en los niños al trabajar con experiencias musicales como la presentada en el video?
+          </label>
+          <textarea id="meta-3" class="form-control" rows="4" placeholder="Escribe tu reflexión pedagógica aquí..."></textarea>
+        </div>
+
+        <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 26px;">
+          <button onclick="saveMetacognitiveResponses()" class="btn btn-secondary">
+            <i class="fa-solid fa-floppy-disk"></i> Guardar Mis Reflexiones
+          </button>
+          <button onclick="downloadTeacherReportProtected()" class="btn btn-primary">
+            <i class="fa-solid fa-file-shield"></i> Descargar Informe Protegido (Profesor)
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================
+       ZONA DE GENERACIÓN DE CERTIFICADO DE APROBACIÓN
+       ======================================================== -->
+  <div id="certificate-render-zone">
+    <div class="cert-inner-border">
+      <div style="font-size: 2.4rem; color: #8b5cf6; margin-bottom: 8px;">
+        <i class="fa-solid fa-award"></i>
+      </div>
+      <h1 style="font-size: 2rem; color: #1e293b; text-transform: uppercase; letter-spacing: 2px;">Certificado de Aprobación</h1>
+      <p style="font-size: 1.1rem; color: #64748b; margin: 12px 0;">Se deja constancia de que:</p>
+      
+      <h2 id="cert-student-name" style="font-size: 2.2rem; color: #7c3aed; text-decoration: underline; margin: 16px 0;">Nombre del Estudiante</h2>
+      <p id="cert-student-info" style="font-size: 1rem; color: #475569;">RUT: - | Correo: -</p>
+
+      <p style="max-width: 650px; margin: 20px auto; font-size: 1.05rem;">
+        Ha completado y aprobado satisfactoriamente todos los módulos teóricos y prácticos de la cápsula educativa:
+      </p>
+
+      <h3 style="color: #0ea5e9; font-size: 1.35rem; margin-bottom: 12px;">"Fundamentos de la Expresión Musical: Melodía, Armonía y Ritmo"</h3>
+      <p style="font-size: 0.95rem; color: #64748b;">Especialidad: Técnico en Educación Parvularia</p>
+
+      <div style="display: flex; justify-content: space-around; align-items: center; margin-top: 36px; padding-top: 20px; border-top: 1px solid #cbd5e1;">
+        <div>
+          <strong id="cert-date">-</strong><br>
+          <span style="font-size: 0.85rem; color: #94a3b8;">Fecha de Emisión</span>
+        </div>
+        <div>
+          <strong id="cert-score" style="color: #10b981; font-size: 1.3rem;">100%</strong><br>
+          <span style="font-size: 0.85rem; color: #94a3b8;">Nivel de Logro Obtenido</span>
+        </div>
+        <div>
+          <strong>Cápsula Didáctica Web</strong><br>
+          <span style="font-size: 0.85rem; color: #94a3b8;">Validación Digital</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       BOTÓN FLOTANTE Y VENTANA DE CHATBOT DE AYUDA
+       ======================================================== -->
+  <button class="chatbot-fab" onclick="toggleChatbot()" title="Abrir asistente de consultas">
+    <i class="fa-solid fa-robot" style="font-size: 1.3rem;"></i> Chatbot de ayuda
+  </button>
+
+  <aside class="chatbot-popup" id="chatbot-popup" role="dialog" aria-label="Asistente Pedagógico">
+    <div class="chatbot-header">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <i class="fa-solid fa-robot"></i>
+        <strong>Tutor Virtual de Música</strong>
+      </div>
+      <button onclick="toggleChatbot()" style="background: transparent; border: none; font-size: 1.2rem; cursor: pointer; color: #1e293b;">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="chatbot-messages" id="chatbot-messages">
+      <div class="chat-msg bot">
+        ¡Hola! Soy tu <strong>Tutor Musical</strong>. Puedes preguntarme sobre la diferencia entre <em>melodía</em>, <em>armonía</em> y <em>ritmo</em>, qué es el <em>pulso</em> o cómo enseñar estas nociones a párvulos. ¿Qué te gustaría consultar?
+      </div>
+    </div>
+
+    <form class="chatbot-input-bar" onsubmit="handleChatbotSubmit(event)">
+      <input type="text" id="chatbot-input" placeholder="Pregunta algo sobre música o párvulos..." autocomplete="off" required>
+      <button type="submit" title="Enviar consulta"><i class="fa-solid fa-paper-plane"></i></button>
+    </form>
+  </aside>
+
+  <!-- ========================================================
+       JAVASCRIPT: LÓGICA DE VIDEO-QUIZ, LOCALSTORAGE Y EVALUACIÓN
+       ======================================================== -->
+  <script>
+    // -------------------------------------------------------------
+    // 1. ESTADO GLOBAL Y PERSISTENCIA
+    // -------------------------------------------------------------
+    const APP_STATE = {
+      student: { name: '', email: '', rut: '' },
+      videoQuiz: {
+        q1: null,
+        q2: null,
+        q3: null
+      },
+      examScore: null,
+      examAnswers: {},
+      metacognition: { m1: '', m2: '', m3: '' }
+    };
+
+    const TEACHER_PASSWORD = "4321"; // Contraseña de acceso al informe del profesor
+
+    // Cargar datos previos de localStorage al iniciar
+    document.addEventListener('DOMContentLoaded', () => {
+      loadStoredData();
+      initYouTubeApi();
+    });
+
+    function loadStoredData() {
+      const storedStudent = localStorage.getItem('capsula_student');
+      if (storedStudent) {
+        APP_STATE.student = JSON.parse(storedStudent);
+        updateUserUI();
+        document.getElementById('main-nav-tabs').style.display = 'block';
+        switchTab('portada');
+      }
+
+      const storedMeta = localStorage.getItem('capsula_metacognition');
+      if (storedMeta) {
+        APP_STATE.metacognition = JSON.parse(storedMeta);
+        document.getElementById('meta-1').value = APP_STATE.metacognition.m1 || '';
+        document.getElementById('meta-2').value = APP_STATE.metacognition.m2 || '';
+        document.getElementById('meta-3').value = APP_STATE.metacognition.m3 || '';
+      }
+    }
+
+    function updateUserUI() {
+      const badge = document.getElementById('user-name-badge');
+      if (APP_STATE.student.name) {
+        badge.textContent = `Estudiante: ${APP_STATE.student.name.split(' ')[0]}`;
+      } else {
+        badge.textContent = 'Estudiante: Sin registrar';
+      }
+    }
+
+    function clearUserData() {
+      if (confirm('¿Estás segura de que deseas reiniciar todos tus datos y avances almacenados?')) {
+        localStorage.clear();
+        location.reload();
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 2. NAVEGACIÓN POR PESTAÑAS (TABS) Y PROGRESO
+    // -------------------------------------------------------------
+    const TABS_ORDER = ['portada', 'introduccion', 'activacion', 'desarrollo', 'eval-formativa', 'evaluacion', 'sintesis', 'cierre'];
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.section-tab').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-tab-btn').forEach(btn => btn.classList.remove('active'));
+
+      const targetSection = document.getElementById(`tab-${tabId}`);
+      if (targetSection) {
+        targetSection.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Activar botón del menú correspondiente
+      const navButtons = document.querySelectorAll('.nav-tab-btn');
+      const tabIndex = TABS_ORDER.indexOf(tabId);
+      if (tabIndex >= 0 && navButtons[tabIndex]) {
+        navButtons[tabIndex].classList.add('active');
+      }
+
+      // Actualizar barra de progreso
+      if (tabIndex >= 0) {
+        const percent = Math.round(((tabIndex + 1) / TABS_ORDER.length) * 100);
+        document.getElementById('global-progress-bar').style.width = `${percent}%`;
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 3. REGISTRO DE ESTUDIANTE
+    // -------------------------------------------------------------
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('student-name').value.trim();
+      const email = document.getElementById('student-email').value.trim();
+      const rut = document.getElementById('student-rut').value.trim();
+
+      if (!name || !email) {
+        alert('Por favor, completa los campos requeridos de Nombre y Correo Institucional.');
+        return;
+      }
+
+      APP_STATE.student = { name, email, rut };
+      localStorage.setItem('capsula_student', JSON.stringify(APP_STATE.student));
+      updateUserUI();
+
+      // Habilitar el menú y pasar a la portada
+      document.getElementById('main-nav-tabs').style.display = 'block';
+      switchTab('portada');
+    }
+
+    // -------------------------------------------------------------
+    // 4. INTEGRACIÓN YOUTUBE IFRAME API & VIDEO-QUIZ
+    // -------------------------------------------------------------
+    let ytPlayer = null;
+    let quizInterval = null;
+    const QUIZ_STOPS = {
+      q1: { time: 180, triggered: false }, // 3:00 min
+      q2: { time: 410, triggered: false }, // 6:50 min
+      q3: { time: 510, triggered: false }  // 8:30 min
+    };
+
+    function initYouTubeApi() {
+      // Cargar script oficial de YouTube IFrame API
+      const tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
+
+    window.onYouTubeIframeAPIReady = function() {
+      ytPlayer = new YT.Player('yt-player', {
+        videoId: 'ZX78m85e3io', // ID exacto del video de La Cata Musical: "LOS CONCEPTOS BÁSICOS DE LA MÚSICA"
+        playerVars: {
+          'playsinline': 1,
+          'rel': 0,
+          'modestbranding': 1
+        },
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    };
+
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        startQuizTimer();
+      } else {
+        stopQuizTimer();
+      }
+    }
+
+    function startQuizTimer() {
+      if (quizInterval) clearInterval(quizInterval);
+      quizInterval = setInterval(() => {
+        if (!ytPlayer || typeof ytPlayer.getCurrentTime !== 'function') return;
+        const currentSec = Math.floor(ytPlayer.getCurrentTime());
+
+        // Comprobación de stops
+        if (currentSec >= QUIZ_STOPS.q1.time && !QUIZ_STOPS.q1.triggered) {
+          triggerVideoQuiz(1);
+        } else if (currentSec >= QUIZ_STOPS.q2.time && !QUIZ_STOPS.q2.triggered) {
+          triggerVideoQuiz(2);
+        } else if (currentSec >= QUIZ_STOPS.q3.time && !QUIZ_STOPS.q3.triggered) {
+          triggerVideoQuiz(3);
+        }
+      }, 800);
+    }
+
+    function stopQuizTimer() {
+      if (quizInterval) clearInterval(quizInterval);
+    }
+
+    function triggerVideoQuiz(quizNum) {
+      QUIZ_STOPS[`q${quizNum}`].triggered = true;
+      if (ytPlayer && ytPlayer.pauseVideo) {
+        ytPlayer.pauseVideo();
+      }
+      document.getElementById(`quiz-modal-${quizNum}`).style.display = 'flex';
+    }
+
+    function triggerQuizManual(quizNum) {
+      triggerVideoQuiz(quizNum);
+    }
+
+    function resumeVideoAfterQuiz(quizNum) {
+      document.getElementById(`quiz-modal-${quizNum}`).style.display = 'none';
+      if (ytPlayer && ytPlayer.playVideo) {
+        ytPlayer.playVideo();
+      }
+    }
+
+    // Manejo de respuesta para Pregunta 1 (Sí/No)
+    function handleVideoQuizAnswer(qNum, selectedAnswer) {
+      const fb = document.getElementById(`quiz-feedback-${qNum}`);
+      const resumeBtn = document.getElementById(`resume-btn-${qNum}`);
+
+      if (selectedAnswer === true) {
+        APP_STATE.videoQuiz.q1 = { correct: true, answer: 'Sí' };
+        fb.className = 'feedback-box correct';
+        fb.innerHTML = '<strong><i class="fa-solid fa-circle-check"></i> ¡Correcto!</strong> La melodía es precisamente una sucesión coherente y ordenada de notas que destaca como discurso central de la música y que solemos recordar y tararear.';
+      } else {
+        APP_STATE.videoQuiz.q1 = { correct: false, answer: 'No' };
+        fb.className = 'feedback-box incorrect';
+        fb.innerHTML = '<strong><i class="fa-solid fa-circle-xmark"></i> Respuesta incorrecta:</strong> César Muñoz enfatiza en el min 1:11 que la melodía es esa sucesión de notas que construye un discurso musical coherente.';
+      }
+      fb.style.display = 'block';
+      resumeBtn.style.display = 'block';
+      saveAppProgress();
+    }
+
+    // -------------------------------------------------------------
+    // 5. LÓGICA DE EMPAREJAMIENTO (MATCHING GAMES: 2, 3 Y FINAL)
+    // -------------------------------------------------------------
+    const MATCH_STATE = {
+      game2: { selectedTerm: null, selectedDef: null, pairsMatched: 0, total: 3 },
+      game3: { selectedTerm: null, selectedDef: null, pairsMatched: 0, total: 3 },
+      final: { selectedTerm: null, selectedDef: null, pairsMatched: 0, total: 3 }
+    };
+
+    function selectMatchItem(el, type, gameId) {
+      const state = MATCH_STATE[`game${gameId}`] || MATCH_STATE[gameId];
+      if (el.classList.contains('matched')) return;
+
+      const container = el.closest('.matching-container');
+
+      if (type === 'term') {
+        container.querySelectorAll('#col-terms-' + gameId + ' .match-item').forEach(i => i.classList.remove('selected'));
+        el.classList.add('selected');
+        state.selectedTerm = el;
+      } else {
+        container.querySelectorAll('#col-defs-' + gameId + ' .match-item').forEach(i => i.classList.remove('selected'));
+        el.classList.add('selected');
+        state.selectedDef = el;
+      }
+
+      // Si ambos están seleccionados, evaluar par
+      if (state.selectedTerm && state.selectedDef) {
+        const idTerm = state.selectedTerm.getAttribute('data-id');
+        const idDef = state.selectedDef.getAttribute('data-id');
+
+        if (idTerm === idDef) {
+          state.selectedTerm.classList.remove('selected');
+          state.selectedDef.classList.remove('selected');
+          state.selectedTerm.classList.add('matched');
+          state.selectedDef.classList.add('matched');
+          state.pairsMatched++;
+
+          state.selectedTerm = null;
+          state.selectedDef = null;
+
+          if (state.pairsMatched === state.total) {
+            handleMatchGameComplete(gameId);
+          }
+        } else {
+          // Error temporal
+          const t = state.selectedTerm;
+          const d = state.selectedDef;
+          t.style.backgroundColor = '#fecaca';
+          d.style.backgroundColor = '#fecaca';
+          setTimeout(() => {
+            t.style.backgroundColor = '';
+            d.style.backgroundColor = '';
+            t.classList.remove('selected');
+            d.classList.remove('selected');
+            state.selectedTerm = null;
+            state.selectedDef = null;
+          }, 600);
+        }
+      }
+    }
+
+    function handleMatchGameComplete(gameId) {
+      if (gameId === 2) {
+        APP_STATE.videoQuiz.q2 = { correct: true };
+        const fb = document.getElementById('quiz-feedback-2');
+        fb.className = 'feedback-box correct';
+        fb.innerHTML = '<strong><i class="fa-solid fa-circle-check"></i> ¡Excelente trabajo!</strong> Has emparejado correctamente la armonía (acompañamiento), tríada (3 notas) y tétrada (4 notas).';
+        fb.style.display = 'block';
+        document.getElementById('resume-btn-2').style.display = 'block';
+      } else if (gameId === 3) {
+        APP_STATE.videoQuiz.q3 = { correct: true };
+        const fb = document.getElementById('quiz-feedback-3');
+        fb.className = 'feedback-box correct';
+        fb.innerHTML = '<strong><i class="fa-solid fa-circle-check"></i> ¡Brillante!</strong> Has relacionado con precisión el pulso (latido regular), el ritmo (duraciones en el tiempo) y el canto al unísono.';
+        fb.style.display = 'block';
+        document.getElementById('resume-btn-3').style.display = 'block';
+      } else if (gameId === 'final') {
+        document.getElementById('match-final-completed').value = "1";
+        alert('¡Excelente! Has completado con éxito la relación de estrategias musicales en Educación Parvularia.');
+      }
+      saveAppProgress();
+    }
+
+    function saveAppProgress() {
+      localStorage.setItem('capsula_videoquiz', JSON.stringify(APP_STATE.videoQuiz));
+    }
+
+    // -------------------------------------------------------------
+    // 6. EVALUACIÓN SUMATIVA FINAL Y REPORTE
+    // -------------------------------------------------------------
+    function handleFinalExamSubmit(e) {
+      e.preventDefault();
+
+      // Pauta de corrección
+      const answerKey = {
+        q1: 'B',
+        q2: 'C',
+        q3: 'A',
+        q4: 'A',
+        q5: 'V',
+        q6: 'F',
+        q7: 'V',
+        q8: 'V'
+      };
+
+      let correctCount = 0;
+      const totalItems = 10; // 8 cerradas + 1 matching + 1 desarrollo considerado calificado
+      const studentAnswers = {};
+
+      for (let i = 1; i <= 8; i++) {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected) {
+          studentAnswers[`q${i}`] = selected.value;
+          if (selected.value === answerKey[`q${i}`]) {
+            correctCount++;
+          }
+        }
+      }
+
+      // Validar actividad de emparejamiento final
+      const matchFinal = document.getElementById('match-final-completed').value;
+      if (matchFinal === "1") {
+        correctCount++;
+        studentAnswers['matching_final'] = 'Completado con éxito (3/3)';
+      } else {
+        studentAnswers['matching_final'] = 'Incompleto';
+      }
+
+      // Validar respuestas abiertas
+      const q9 = document.getElementById('q9-text').value.trim();
+      const q10 = document.getElementById('q10-text').value.trim();
+      studentAnswers['q9'] = q9;
+      studentAnswers['q10'] = q10;
+
+      if (q9.length > 15 && q10.length > 15) {
+        correctCount++; // Bonificación por desarrollo fundamentado
+      }
+
+      const scorePercent = Math.round((correctCount / totalItems) * 100);
+      APP_STATE.examScore = scorePercent;
+      APP_STATE.examAnswers = studentAnswers;
+      localStorage.setItem('capsula_exam_score', scorePercent);
+      localStorage.setItem('capsula_exam_answers', JSON.stringify(studentAnswers));
+
+      displayExamResults(scorePercent);
+    }
+
+    function displayExamResults(score) {
+      const resultsCard = document.getElementById('exam-results-card');
+      const icon = document.getElementById('exam-score-icon');
+      const title = document.getElementById('exam-score-title');
+      const text = document.getElementById('exam-score-text');
+      const actionsZone = document.getElementById('exam-actions-zone');
+
+      resultsCard.style.display = 'block';
+
+      if (score >= 75) {
+        icon.innerHTML = '<i class="fa-solid fa-circle-check" style="color: #10b981;"></i>';
+        title.textContent = `¡Felicitaciones! Has Aprobado con ${score}%`;
+        text.innerHTML = `Demuestras un dominio sólido de los conceptos de <strong>Melodía, Armonía y Ritmo</strong>, y su proyección pedagógica hacia la primera infancia.`;
+        actionsZone.innerHTML = `
+          <button onclick="generateCertificatePDF()" class="btn btn-success btn-lg">
+            <i class="fa-solid fa-file-pdf"></i> Descargar Certificado de Aprobación (PDF)
+          </button>
+          <button onclick="switchTab('sintesis')" class="btn btn-primary">
+            Ir a Síntesis & Pódcast <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        `;
+      } else {
+        icon.innerHTML = '<i class="fa-solid fa-circle-exclamation" style="color: #f59e0b;"></i>';
+        title.textContent = `Puntaje Obtenido: ${score}% (No Aprobado)`;
+        text.innerHTML = `El puntaje mínimo requerido para certificar es de <strong>75%</strong>. Te invitamos a repasar los videos y conceptos, y volver a intentar la evaluación.`;
+        actionsZone.innerHTML = `
+          <button onclick="resetExamForm()" class="btn btn-primary">
+            <i class="fa-solid fa-rotate-right"></i> Intentar Nuevamente la Evaluación
+          </button>
+        `;
+      }
+
+      resultsCard.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function resetExamForm() {
+      document.getElementById('final-exam-form').reset();
+      document.getElementById('exam-results-card').style.display = 'none';
+      window.scrollTo({ top: 300, behavior: 'smooth' });
+    }
+
+    // -------------------------------------------------------------
+    // 7. GENERACIÓN DE CERTIFICADO PDF (html2pdf.js)
+    // -------------------------------------------------------------
+    function generateCertificatePDF() {
+      const certZone = document.getElementById('certificate-render-zone');
+      document.getElementById('cert-student-name').textContent = APP_STATE.student.name || 'Estudiante';
+      document.getElementById('cert-student-info').textContent = `RUT: ${APP_STATE.student.rut || 'No informado'} • Correo: ${APP_STATE.student.email || 'No informado'}`;
+      document.getElementById('cert-date').textContent = new Date().toLocaleDateString('es-CL');
+      document.getElementById('cert-score').textContent = `${APP_STATE.examScore || 100}%`;
+
+      certZone.style.display = 'block';
+
+      const opt = {
+        margin: 10,
+        filename: `Certificado_Musica_${APP_STATE.student.name.replace(/\s+/g, '_')}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
+      };
+
+      html2pdf().set(opt).from(certZone).save().then(() => {
+        certZone.style.display = 'none';
+      });
+    }
+
+    // -------------------------------------------------------------
+    // 8. REFLEXIONES METACOGNITIVAS Y DESCARGA INFORME DOCENTE
+    // -------------------------------------------------------------
+    function saveMetacognitiveResponses() {
+      const m1 = document.getElementById('meta-1').value.trim();
+      const m2 = document.getElementById('meta-2').value.trim();
+      const m3 = document.getElementById('meta-3').value.trim();
+
+      if (!m1 || !m2 || !m3) {
+        alert('Por favor, responde las tres preguntas metacognitivas antes de guardar.');
+        return;
+      }
+
+      APP_STATE.metacognition = { m1, m2, m3 };
+      localStorage.setItem('capsula_metacognition', JSON.stringify(APP_STATE.metacognition));
+      alert('¡Tus reflexiones pedagógicas han sido guardadas con éxito en el sistema!');
+    }
+
+    function downloadTeacherReportProtected() {
+      saveMetacognitiveResponses();
+
+      const inputPassword = prompt("Este informe está protegido. Ingrese la contraseña docente:");
+      if (inputPassword !== TEACHER_PASSWORD) {
+        alert("Contraseña incorrecta. El informe solo puede ser generado con la clave de autorización del profesor (4321).");
+        return;
+      }
+
+      // Crear archivo HTML no modificable con contraseña y datos encriptados
+      const student = APP_STATE.student;
+      const score = APP_STATE.examScore !== null ? `${APP_STATE.examScore}%` : 'No rendido';
+      const vq1 = APP_STATE.videoQuiz.q1 ? (APP_STATE.videoQuiz.q1.correct ? 'Correcto' : 'Incorrecto') : 'No respondido';
+      const vq2 = APP_STATE.videoQuiz.q2 ? 'Completado' : 'No respondido';
+      const vq3 = APP_STATE.videoQuiz.q3 ? 'Completado' : 'No respondido';
+
+      const htmlContent = `
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Informe Oficial de Evaluación - ${student.name || 'Estudiante'}</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; background: #f8fafc; color: #1e293b; line-height: 1.6; }
+    .card { background: #fff; padding: 30px; border-radius: 12px; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    h1 { color: #6d28d9; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+    h2 { color: #0284c7; margin-top: 24px; }
+    .badge { background: #dcfce7; color: #15803d; padding: 4px 12px; border-radius: 12px; font-weight: bold; }
+    .meta-box { background: #f1f5f9; padding: 14px; border-left: 4px solid #8b5cf6; margin-bottom: 14px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Informe Docente • Fundamentos de la Expresión Musical</h1>
+    <p><strong>Estudiante:</strong> ${student.name || 'Sin registrar'}</p>
+    <p><strong>Correo:</strong> ${student.email || 'Sin registrar'}</p>
+    <p><strong>RUT:</strong> ${student.rut || 'No informado'}</p>
+    <p><strong>Fecha de Emisión:</strong> ${new Date().toLocaleString('es-CL')}</p>
+    <p><strong>Calificación Evaluación Sumativa:</strong> <span class="badge">${score}</span></p>
+
+    <h2>1. Resultados Video-Quiz</h2>
+    <ul>
+      <li>Min 3:00 (Concepto Melodía): <strong>${vq1}</strong></li>
+      <li>Min 6:50 (Armonía, Tríada, Tétrada): <strong>${vq2}</strong></li>
+      <li>Min 8:30 (Ritmo, Pulso y Unísono): <strong>${vq3}</strong></li>
+    </ul>
+
+    <h2>2. Respuestas a Preguntas de Cuestionario (Evaluación Sumativa)</h2>
+    <div class="meta-box">
+      <strong>Pregunta 9 (Importancia del Pulso en Párvulos):</strong><br>
+      ${APP_STATE.examAnswers.q9 || 'Sin respuesta'}
+    </div>
+    <div class="meta-box">
+      <strong>Pregunta 10 (Diseño de Actividad Melodía + Pulso):</strong><br>
+      ${APP_STATE.examAnswers.q10 || 'Sin respuesta'}
+    </div>
+
+    <h2>3. Preguntas Metacognitivas y Reflexión Pedagógica</h2>
+    <div class="meta-box">
+      <strong>1. Uso del recurso para favorecer el lenguaje y expresión:</strong><br>
+      ${APP_STATE.metacognition.m1 || 'Sin respuesta'}
+    </div>
+    <div class="meta-box">
+      <strong>2. Estrategias para transformar el contenido en aprendizaje activo:</strong><br>
+      ${APP_STATE.metacognition.m2 || 'Sin respuesta'}
+    </div>
+    <div class="meta-box">
+      <strong>3. Habilidades y aprendizajes fortalecidos desde el rol profesional:</strong><br>
+      ${APP_STATE.metacognition.m3 || 'Sin respuesta'}
+    </div>
+    <footer style="margin-top: 30px; font-size: 0.85rem; color: #94a3b8; text-align: center;">
+      Informe certificado emitido con validación docente • Clave de acceso: 4321
+    </footer>
+  </div>
+</body>
+</html>
+      `;
+
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Informe_Docente_${(student.name || 'Estudiante').replace(/\s+/g, '_')}.html`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // -------------------------------------------------------------
+    // 9. CHATBOT DE AYUDA PEDAGÓGICA Y MUSICAL
+    // -------------------------------------------------------------
+    function toggleChatbot() {
+      const popup = document.getElementById('chatbot-popup');
+      popup.style.display = (popup.style.display === 'flex') ? 'none' : 'flex';
+      if (popup.style.display === 'flex') {
+        document.getElementById('chatbot-input').focus();
+      }
+    }
+
+    function handleChatbotSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chatbot-input');
+      const query = input.value.trim().toLowerCase();
+      if (!query) return;
+
+      appendChatMessage(input.value.trim(), 'user');
+      input.value = '';
+
+      setTimeout(() => {
+        const response = generateBotResponse(query);
+        appendChatMessage(response, 'bot');
+      }, 400);
+    }
+
+    function appendChatMessage(text, sender) {
+      const msgBox = document.getElementById('chatbot-messages');
+      const div = document.createElement('div');
+      div.className = `chat-msg ${sender}`;
+      div.innerHTML = text;
+      msgBox.appendChild(div);
+      msgBox.scrollTop = msgBox.scrollHeight;
+    }
+
+    function generateBotResponse(q) {
+      if (q.includes('melodia') || q.includes('melodía')) {
+        return "<strong>La Melodía</strong> es una sucesión horizontal de notas musicales ordenadas que crean un discurso coherente [00:01:08]. En Educación Parvularia es lo que los niños tararean o cantan como tema principal [00:01:05, 00:03:36].";
+      }
+      if (q.includes('armonia') || q.includes('armonía')) {
+        return "<strong>La Armonía</strong> es el soporte y acompañamiento simultáneo de la melodía [00:04:21]. Está formada por acordes: si tiene 3 notas es una <em>tríada</em> y si tiene 4 notas es una <em>tétrada</em> [00:05:27, 00:05:52, 00:05:55].";
+      }
+      if (q.includes('ritmo')) {
+        return "<strong>El Ritmo</strong> es la manera en que los sonidos y silencios se organizan en el tiempo [00:08:09]. Incluye el <em>pulso</em> y la duración de cada sonido [00:06:57, 00:07:07].";
+      }
+      if (q.includes('pulso')) {
+        return "<strong>El Pulso</strong> es el latido constante y regular de la música [00:06:57]. En la sala cuna y jardín lo trabajamos marcándolo con palmas, con los pies o caminando al compás [00:07:35].";
+      }
+      if (q.includes('unisono') || q.includes('unísono')) {
+        return "<strong>Cantar al Unísono</strong> ocurre cuando varias personas cantan exactamente las mismas notas al mismo tiempo, como en los cantos gregorianos o en las rondas infantiles [00:02:44, 00:03:00, 00:03:54].";
+      }
+      if (q.includes('parvularia') || q.includes('niños') || q.includes('párvulos') || q.includes('estrategia')) {
+        return "Para párvulos, la mejor estrategia es la vivencia corporal: usar títeres para notas agudas/graves, instrumentos de percusión para el pulso y rondas colectivas para cantar al unísono [00:01:52, 00:03:00, 00:07:49]. ¡Recuerda que lo esencial es el disfrute y la creatividad! [00:09:47]";
+      }
+      if (q.includes('certificado') || q.includes('nota') || q.includes('aprobar')) {
+        return "Para descargar tu Certificado en PDF debes rendir la Evaluación Sumativa y obtener al menos un <strong>75% de aprobación</strong>.";
+      }
+      return "Puedo orientarte sobre los conceptos del video: <em>Melodía, Armonía, Ritmo, Pulso, Tríadas, Unísono</em> o sobre actividades musicales para Educación Parvularia [00:00:54, 00:04:21, 00:05:52, 00:06:57]. ¿Qué concepto deseas profundizar?";
+    }
+  </script>
+</body>
+</html>
